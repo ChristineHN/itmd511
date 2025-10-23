@@ -1,0 +1,952 @@
+[
+  {
+    "title": "Software Engineer (Backend)",
+    "description": "Builds and maintains server-side applications and APIs.",
+    "core_skills": [
+      "Python",
+      "SQL",
+      "APIs",
+      "Databases",
+      "Git"
+    ]
+  },
+  {
+    "title": "Frontend Developer",
+    "description": "Creates interactive web interfaces and user experiences.",
+    "core_skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React"
+    ]
+  },
+  {
+    "title": "Data Analyst",
+    "description": "Analyzes datasets and creates visual insights for business decisions.",
+    "core_skills": [
+      "Python",
+      "SQL",
+      "Pandas",
+      "Visualization"
+    ]
+  },
+  {
+    "title": "Full Stack Developer",
+    "description": "Develops both client-side and server-side software.",
+    "core_skills": [
+      "JavaScript",
+      "Node.js",
+      "React",
+      "SQL",
+      "Git"
+    ]
+  },
+  {
+    "title": "DevOps Engineer",
+    "description": "Manages infrastructure, CI/CD pipelines, and deployments.",
+    "core_skills": [
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "CI/CD",
+      "Terraform"
+    ]
+  },
+  {
+    "title": "Data Scientist",
+    "description": "Builds models to extract insights from complex datasets.",
+    "core_skills": [
+      "Python",
+      "Machine Learning",
+      "Statistics",
+      "R"
+    ]
+  },
+  {
+    "title": "Machine Learning Engineer",
+    "description": "Designs and deploys machine learning models in production.",
+    "core_skills": [
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "MLflow"
+    ]
+  },
+  {
+    "title": "Cloud Architect",
+    "description": "Designs scalable cloud infrastructure and solutions.",
+    "core_skills": [
+      "AWS",
+      "Azure",
+      "GCP",
+      "Terraform",
+      "Cloud Security"
+    ]
+  },
+  {
+    "title": "Cybersecurity Analyst",
+    "description": "Protects systems from cyber threats and vulnerabilities.",
+    "core_skills": [
+      "Penetration Testing",
+      "Firewalls",
+      "SIEM",
+      "Python"
+    ]
+  },
+  {
+    "title": "Database Administrator",
+    "description": "Manages and optimizes database systems for performance.",
+    "core_skills": [
+      "SQL",
+      "MySQL",
+      "PostgreSQL",
+      "Database Tuning"
+    ]
+  },
+  {
+    "title": "AI Research Scientist",
+    "description": "Develops novel AI algorithms and models.",
+    "core_skills": [
+      "Python",
+      "Deep Learning",
+      "NLP",
+      "PyTorch"
+    ]
+  },
+  {
+    "title": "Site Reliability Engineer",
+    "description": "Ensures system reliability and performance at scale.",
+    "core_skills": [
+      "Linux",
+      "Monitoring",
+      "AWS",
+      "Ansible"
+    ]
+  },
+  {
+    "title": "Mobile App Developer",
+    "description": "Builds applications for iOS and Android platforms.",
+    "core_skills": [
+      "Swift",
+      "Kotlin",
+      "Flutter",
+      "React Native"
+    ]
+  },
+  {
+    "title": "Game Developer",
+    "description": "Creates interactive video games and simulations.",
+    "core_skills": [
+      "Unity",
+      "C#",
+      "Unreal Engine",
+      "3D Modeling"
+    ]
+  },
+  {
+    "title": "Embedded Systems Engineer",
+    "description": "Develops software for hardware devices and IoT.",
+    "core_skills": [
+      "C",
+      "C++",
+      "Microcontrollers",
+      "RTOS"
+    ]
+  },
+  {
+    "title": "UI/UX Designer",
+    "description": "Designs user-friendly interfaces and experiences.",
+    "core_skills": [
+      "Figma",
+      "Sketch",
+      "Prototyping",
+      "User Testing"
+    ]
+  },
+  {
+    "title": "Blockchain Developer",
+    "description": "Builds decentralized applications and smart contracts.",
+    "core_skills": [
+      "Solidity",
+      "Ethereum",
+      "Web3.js",
+      "Cryptography"
+    ]
+  },
+  {
+    "title": "QA Engineer",
+    "description": "Ensures software quality through testing and automation.",
+    "core_skills": [
+      "Selenium",
+      "Cypress",
+      "Jira",
+      "Test Automation"
+    ]
+  },
+  {
+    "title": "Network Engineer",
+    "description": "Manages and optimizes network infrastructure.",
+    "core_skills": [
+      "Cisco",
+      "Routing",
+      "Switching",
+      "Network Security"
+    ]
+  },
+  {
+    "title": "Technical Product Manager",
+    "description": "Guides product development with technical insights.",
+    "core_skills": [
+      "Agile",
+      "Scrum",
+      "Jira",
+      "Stakeholder Management"
+    ]
+  },
+  {
+    "title": "Data Engineer",
+    "description": "Builds data pipelines for large-scale processing.",
+    "core_skills": [
+      "Python",
+      "Spark",
+      "Hadoop",
+      "ETL"
+    ]
+  },
+  {
+    "title": "Business Intelligence Analyst",
+    "description": "Develops dashboards for strategic decision-making.",
+    "core_skills": [
+      "Tableau",
+      "Power BI",
+      "SQL",
+      "Data Modeling"
+    ]
+  },
+  {
+    "title": "Cloud Security Engineer",
+    "description": "Secures cloud-based systems and applications.",
+    "core_skills": [
+      "AWS Security",
+      "IAM",
+      "Encryption",
+      "Compliance"
+    ]
+  },
+  {
+    "title": "Robotics Engineer",
+    "description": "Designs and programs robotic systems.",
+    "core_skills": [
+      "ROS",
+      "C++",
+      "Python",
+      "Control Systems"
+    ]
+  },
+  {
+    "title": "AR/VR Developer",
+    "description": "Creates augmented and virtual reality experiences.",
+    "core_skills": [
+      "Unity",
+      "C#",
+      "ARCore",
+      "VR SDKs"
+    ]
+  },
+  {
+    "title": "Systems Analyst",
+    "description": "Analyzes and improves IT systems for efficiency.",
+    "core_skills": [
+      "Requirements Analysis",
+      "UML",
+      "SQL",
+      "ERP"
+    ]
+  },
+  {
+    "title": "API Developer",
+    "description": "Designs and maintains APIs for system integration.",
+    "core_skills": [
+      "REST",
+      "GraphQL",
+      "Python",
+      "Postman"
+    ]
+  },
+  {
+    "title": "Big Data Engineer",
+    "description": "Handles large-scale data processing and storage.",
+    "core_skills": [
+      "Hadoop",
+      "Spark",
+      "Kafka",
+      "Scala"
+    ]
+  },
+  {
+    "title": "Web Developer",
+    "description": "Builds and maintains websites and web applications.",
+    "core_skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "PHP"
+    ]
+  },
+  {
+    "title": "Security Engineer",
+    "description": "Implements security measures to protect systems.",
+    "core_skills": [
+      "Cryptography",
+      "Penetration Testing",
+      "SIEM"
+    ]
+  },
+  {
+    "title": "Data Visualization Specialist",
+    "description": "Creates visual representations of complex data.",
+    "core_skills": [
+      "Tableau",
+      "D3.js",
+      "Power BI",
+      "Python"
+    ]
+  },
+  {
+    "title": "IoT Developer",
+    "description": "Develops software for Internet of Things devices.",
+    "core_skills": [
+      "C",
+      "Python",
+      "MQTT",
+      "IoT Protocols"
+    ]
+  },
+  {
+    "title": "Firmware Engineer",
+    "description": "Writes low-level code for hardware devices.",
+    "core_skills": [
+      "C",
+      "Assembly",
+      "Embedded Systems",
+      "RTOS"
+    ]
+  },
+  {
+    "title": "Cloud Engineer",
+    "description": "Manages and optimizes cloud-based infrastructure.",
+    "core_skills": [
+      "AWS",
+      "Azure",
+      "Terraform",
+      "Linux"
+    ]
+  },
+  {
+    "title": "AI Product Manager",
+    "description": "Oversees development of AI-driven products.",
+    "core_skills": [
+      "Agile",
+      "Machine Learning",
+      "Product Roadmaps"
+    ]
+  },
+  {
+    "title": "Penetration Tester",
+    "description": "Tests systems for security vulnerabilities.",
+    "core_skills": [
+      "Kali Linux",
+      "Metasploit",
+      "Burp Suite",
+      "Python"
+    ]
+  },
+  {
+    "title": "MLOps Engineer",
+    "description": "Manages deployment and monitoring of ML models.",
+    "core_skills": [
+      "MLflow",
+      "Kubernetes",
+      "Docker",
+      "Python"
+    ]
+  },
+  {
+    "title": "Game Designer",
+    "description": "Creates game mechanics and storylines.",
+    "core_skills": [
+      "Unity",
+      "C#",
+      "Game Design",
+      "Storyboarding"
+    ]
+  },
+  {
+    "title": "Technical Writer",
+    "description": "Creates documentation for technical systems.",
+    "core_skills": [
+      "Markdown",
+      "API Documentation",
+      "Confluence"
+    ]
+  },
+  {
+    "title": "Site Operations Engineer",
+    "description": "Manages data center and server operations.",
+    "core_skills": [
+      "Linux",
+      "Networking",
+      "Monitoring",
+      "Ansible"
+    ]
+  },
+  {
+    "title": "Mobile QA Engineer",
+    "description": "Tests mobile applications for quality assurance.",
+    "core_skills": [
+      "Appium",
+      "Test Automation",
+      "iOS",
+      "Android"
+    ]
+  },
+  {
+    "title": "Performance Engineer",
+    "description": "Optimizes software for speed and efficiency.",
+    "core_skills": [
+      "Profiling",
+      "Load Testing",
+      "JMeter",
+      "Python"
+    ]
+  },
+  {
+    "title": "Data Privacy Officer",
+    "description": "Ensures compliance with data protection regulations.",
+    "core_skills": [
+      "GDPR",
+      "Compliance",
+      "Data Governance"
+    ]
+  },
+  {
+    "title": "Scrum Master",
+    "description": "Facilitates agile development processes.",
+    "core_skills": [
+      "Scrum",
+      "Agile",
+      "Jira",
+      "Kanban"
+    ]
+  },
+  {
+    "title": "Network Security Engineer",
+    "description": "Secures network infrastructure from threats.",
+    "core_skills": [
+      "Firewalls",
+      "VPN",
+      "IDS/IPS",
+      "Cisco"
+    ]
+  },
+  {
+    "title": "AI Ethics Specialist",
+    "description": "Ensures ethical use of AI technologies.",
+    "core_skills": [
+      "AI Ethics",
+      "Policy Analysis",
+      "Data Privacy"
+    ]
+  },
+  {
+    "title": "Bioinformatics Analyst",
+    "description": "Analyzes biological data using computational tools.",
+    "core_skills": [
+      "Python",
+      "R",
+      "Genomics",
+      "Biostatistics"
+    ]
+  },
+  {
+    "title": "Computer Vision Engineer",
+    "description": "Develops algorithms for image and video processing.",
+    "core_skills": [
+      "OpenCV",
+      "Python",
+      "Deep Learning",
+      "TensorFlow"
+    ]
+  },
+  {
+    "title": "NLP Engineer",
+    "description": "Builds systems for natural language processing.",
+    "core_skills": [
+      "NLP",
+      "Transformers",
+      "Python",
+      "Hugging Face"
+    ]
+  },
+  {
+    "title": "Quantum Computing Researcher",
+    "description": "Develops algorithms for quantum computers.",
+    "core_skills": [
+      "Qiskit",
+      "Python",
+      "Quantum Mechanics"
+    ]
+  },
+  {
+    "title": "SRE Manager",
+    "description": "Leads site reliability engineering teams.",
+    "core_skills": [
+      "Leadership",
+      "SRE",
+      "AWS",
+      "Monitoring"
+    ]
+  },
+  {
+    "title": "Web3 Developer",
+    "description": "Builds applications for decentralized web.",
+    "core_skills": [
+      "Solidity",
+      "Web3.js",
+      "IPFS",
+      "Ethereum"
+    ]
+  },
+  {
+    "title": "Cloud Solutions Engineer",
+    "description": "Implements cloud-based solutions for clients.",
+    "core_skills": [
+      "AWS",
+      "Azure",
+      "GCP",
+      "Terraform"
+    ]
+  },
+  {
+    "title": "Data Governance Specialist",
+    "description": "Manages data policies and compliance.",
+    "core_skills": [
+      "Data Governance",
+      "SQL",
+      "Compliance"
+    ]
+  },
+  {
+    "title": "Automation Engineer",
+    "description": "Automates workflows and processes.",
+    "core_skills": [
+      "Python",
+      "Ansible",
+      "RPA",
+      "Jenkins"
+    ]
+  },
+  {
+    "title": "UX Researcher",
+    "description": "Conducts research to improve user experiences.",
+    "core_skills": [
+      "User Testing",
+      "Surveys",
+      "Figma",
+      "Analytics"
+    ]
+  },
+  {
+    "title": "Infrastructure Engineer",
+    "description": "Builds and maintains IT infrastructure.",
+    "core_skills": [
+      "Linux",
+      "Terraform",
+      "AWS",
+      "Networking"
+    ]
+  },
+  {
+    "title": "Software Architect",
+    "description": "Designs high-level software structures.",
+    "core_skills": [
+      "System Design",
+      "Microservices",
+      "UML"
+    ]
+  },
+  {
+    "title": "IT Project Manager",
+    "description": "Manages IT projects and deliverables.",
+    "core_skills": [
+      "PMP",
+      "Agile",
+      "Jira",
+      "Risk Management"
+    ]
+  },
+  {
+    "title": "Data Warehouse Engineer",
+    "description": "Designs and maintains data warehouses.",
+    "core_skills": [
+      "Snowflake",
+      "Redshift",
+      "ETL",
+      "SQL"
+    ]
+  },
+  {
+    "title": "API Security Specialist",
+    "description": "Secures APIs against vulnerabilities.",
+    "core_skills": [
+      "OAuth",
+      "REST",
+      "Security Testing",
+      "Postman"
+    ]
+  },
+  {
+    "title": "Game Engine Developer",
+    "description": "Builds tools for game development engines.",
+    "core_skills": [
+      "C++",
+      "Unreal Engine",
+      "Unity",
+      "Shader Programming"
+    ]
+  },
+  {
+    "title": "Cloud DevOps Engineer",
+    "description": "Manages cloud-based CI/CD and infrastructure.",
+    "core_skills": [
+      "AWS",
+      "Docker",
+      "Kubernetes",
+      "GitOps"
+    ]
+  },
+  {
+    "title": "AI Trainer",
+    "description": "Curates data to train AI models.",
+    "core_skills": [
+      "Data Annotation",
+      "Python",
+      "Machine Learning"
+    ]
+  },
+  {
+    "title": "Security Architect",
+    "description": "Designs secure system architectures.",
+    "core_skills": [
+      "Security Frameworks",
+      "TOGAF",
+      "CISSP"
+    ]
+  },
+  {
+    "title": "Mobile Game Developer",
+    "description": "Creates games for mobile platforms.",
+    "core_skills": [
+      "Unity",
+      "C#",
+      "Android",
+      "iOS"
+    ]
+  },
+  {
+    "title": "Data Pipeline Engineer",
+    "description": "Builds scalable data processing pipelines.",
+    "core_skills": [
+      "Apache Airflow",
+      "Spark",
+      "Python",
+      "Kafka"
+    ]
+  },
+  {
+    "title": "Frontend Architect",
+    "description": "Designs scalable front-end architectures.",
+    "core_skills": [
+      "React",
+      "TypeScript",
+      "Web Performance",
+      "CSS"
+    ]
+  },
+  {
+    "title": "Backend Architect",
+    "description": "Designs robust server-side architectures.",
+    "core_skills": [
+      "Microservices",
+      "Node.js",
+      "SQL",
+      "System Design"
+    ]
+  },
+  {
+    "title": "AI Systems Engineer",
+    "description": "Integrates AI models into production systems.",
+    "core_skills": [
+      "Python",
+      "Docker",
+      "MLflow",
+      "Kubernetes"
+    ]
+  },
+  {
+    "title": "IT Auditor",
+    "description": "Audits IT systems for compliance and security.",
+    "core_skills": [
+      "CISA",
+      "Risk Assessment",
+      "IT Compliance"
+    ]
+  },
+  {
+    "title": "VR Content Creator",
+    "description": "Develops content for virtual reality platforms.",
+    "core_skills": [
+      "Unity",
+      "Blender",
+      "VR SDKs",
+      "3D Modeling"
+    ]
+  },
+  {
+    "title": "Blockchain Security Analyst",
+    "description": "Secures blockchain systems and smart contracts.",
+    "core_skills": [
+      "Solidity",
+      "Cryptography",
+      "Security Auditing"
+    ]
+  },
+  {
+    "title": "Data Quality Analyst",
+    "description": "Ensures accuracy and reliability of data.",
+    "core_skills": [
+      "SQL",
+      "Data Validation",
+      "ETL",
+      "Python"
+    ]
+  },
+  {
+    "title": "Cloud Network Engineer",
+    "description": "Manages cloud-based network infrastructure.",
+    "core_skills": [
+      "AWS VPC",
+      "Networking",
+      "CloudFormation"
+    ]
+  },
+  {
+    "title": "AI Deployment Engineer",
+    "description": "Deploys AI models to production environments.",
+    "core_skills": [
+      "TensorFlow Serving",
+      "Docker",
+      "Kubernetes"
+    ]
+  },
+  {
+    "title": "Web Accessibility Specialist",
+    "description": "Ensures websites meet accessibility standards.",
+    "core_skills": [
+      "WCAG",
+      "HTML",
+      "JavaScript",
+      "Accessibility Testing"
+    ]
+  },
+  {
+    "title": "Site Performance Analyst",
+    "description": "Analyzes and optimizes website performance.",
+    "core_skills": [
+      "Web Performance",
+      "Google Lighthouse",
+      "JavaScript"
+    ]
+  },
+  {
+    "title": "IoT Security Engineer",
+    "description": "Secures Internet of Things devices and networks.",
+    "core_skills": [
+      "IoT Protocols",
+      "Cryptography",
+      "Penetration Testing"
+    ]
+  },
+  {
+    "title": "Data Integration Engineer",
+    "description": "Integrates data from multiple sources.",
+    "core_skills": [
+      "ETL",
+      "SQL",
+      "Apache Nifi",
+      "Python"
+    ]
+  },
+  {
+    "title": "Technical Support Engineer",
+    "description": "Provides technical support for software and systems.",
+    "core_skills": [
+      "Troubleshooting",
+      "Linux",
+      "Customer Support"
+    ]
+  },
+  {
+    "title": "Cloud Cost Analyst",
+    "description": "Optimizes cloud spending and resource usage.",
+    "core_skills": [
+      "AWS Cost Explorer",
+      "Azure Cost Management",
+      "Budgeting"
+    ]
+  },
+  {
+    "title": "AI Interaction Designer",
+    "description": "Designs user interfaces for AI-driven applications.",
+    "core_skills": [
+      "Figma",
+      "Prototyping",
+      "AI UX",
+      "User Testing"
+    ]
+  },
+  {
+    "title": "Database Developer",
+    "description": "Develops and optimizes database applications.",
+    "core_skills": [
+      "SQL",
+      "NoSQL",
+      "MongoDB",
+      "Database Design"
+    ]
+  },
+  {
+    "title": "Blockchain Architect",
+    "description": "Designs blockchain-based system architectures.",
+    "core_skills": [
+      "Ethereum",
+      "Hyperledger",
+      "Smart Contracts"
+    ]
+  },
+  {
+    "title": "Performance Test Engineer",
+    "description": "Tests systems for performance and scalability.",
+    "core_skills": [
+      "JMeter",
+      "LoadRunner",
+      "Performance Testing"
+    ]
+  },
+  {
+    "title": "Mobile Security Engineer",
+    "description": "Secures mobile applications and platforms.",
+    "core_skills": [
+      "Mobile Security",
+      "Penetration Testing",
+      "OWASP"
+    ]
+  },
+  {
+    "title": "Data Migration Specialist",
+    "description": "Manages data migration between systems.",
+    "core_skills": [
+      "ETL",
+      "SQL",
+      "Data Mapping",
+      "Python"
+    ]
+  },
+  {
+    "title": "Cloud Automation Engineer",
+    "description": "Automates cloud infrastructure processes.",
+    "core_skills": [
+      "Terraform",
+      "Ansible",
+      "AWS Lambda",
+      "Python"
+    ]
+  },
+  {
+    "title": "AI Quality Assurance Engineer",
+    "description": "Tests AI models for accuracy and reliability.",
+    "core_skills": [
+      "Python",
+      "Test Automation",
+      "Machine Learning"
+    ]
+  },
+  {
+    "title": "Web Application Developer",
+    "description": "Builds dynamic web applications.",
+    "core_skills": [
+      "JavaScript",
+      "Django",
+      "Flask",
+      "REST APIs"
+    ]
+  },
+  {
+    "title": "Network Administrator",
+    "description": "Manages network systems and connectivity.",
+    "core_skills": [
+      "Cisco",
+      "TCP/IP",
+      "Network Monitoring"
+    ]
+  },
+  {
+    "title": "AI Policy Analyst",
+    "description": "Analyzes policies for AI implementation.",
+    "core_skills": [
+      "AI Ethics",
+      "Policy Analysis",
+      "Regulatory Compliance"
+    ]
+  },
+  {
+    "title": "Game QA Tester",
+    "description": "Tests video games for bugs and quality.",
+    "core_skills": [
+      "Game Testing",
+      "Jira",
+      "Unity",
+      "Bug Tracking"
+    ]
+  },
+  {
+    "title": "Cloud Data Engineer",
+    "description": "Builds data pipelines in cloud environments.",
+    "core_skills": [
+      "Snowflake",
+      "AWS Redshift",
+      "ETL",
+      "Python"
+    ]
+  },
+  {
+    "title": "Frontend QA Engineer",
+    "description": "Tests front-end applications for functionality.",
+    "core_skills": [
+      "Selenium",
+      "Cypress",
+      "JavaScript",
+      "Test Automation"
+    ]
+  },
+  {
+    "title": "Backend QA Engineer",
+    "description": "Tests server-side applications and APIs.",
+    "core_skills": [
+      "Postman",
+      "REST APIs",
+      "SQL",
+      "Test Automation"
+    ]
+  }
+]

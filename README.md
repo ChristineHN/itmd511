@@ -10,7 +10,7 @@ This is a lightweight prototype of a **Career Pathway Recommender** chatbot that
 ## Run locally
 ```bash
 # 1) Run venv
-source .venv/bin/activate
+source bin/activate
 
 # 2) Install deps
 pip install -r requirements.txt

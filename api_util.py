@@ -39,70 +39,142 @@ def compute_top_roles(user_input: str, careers: list, embedder, top_k: int = 3):
     return scored_sorted[:top_k], scored_sorted
 
 
+def enforce_section_spacing(text: str) -> str:
+    """
+    Post-format the LLM output so that:
+    - A/B/C headers are on their own line with a blank line after each header.
+    - There is a blank line between sections and between careers.
+    """
+    import re
+    t = text
+
+    # Ensure a blank line BEFORE B. and C. (so A and B don't run together)
+    t = re.sub(r'\nB\.\s*\*\*Key Skills Needed:\*\*', r'\n\nB. **Key Skills Needed:**', t, flags=re.IGNORECASE)
+    t = re.sub(r'\nC\.\s*\*\*Next Steps\*\*:?', r'\n\nC. **Next Steps:**', t, flags=re.IGNORECASE)
+
+    # Ensure headers are followed by ONE blank line (header on its own line)
+    t = re.sub(r'(A\. \*\*Why it fits:\*\*)[ \t]*\n?', r'\1\n\n', t)
+    t = re.sub(r'(B\. \*\*Key Skills Needed:\*\*)[ \t]*\n?', r'\1\n\n', t)
+    t = re.sub(r'(C\. \*\*Next Steps:\*\*)[ \t]*\n?', r'\1\n\n', t)
+
+    # Ensure a blank line between careers (lines starting with "1. **", "2. **", etc.)
+    t = re.sub(r'\n(?=\d+\.\s\*\*)', r'\n\n', t)
+
+    # Collapse excessive blank lines to double newlines
+    t = re.sub(r'\n{3,}', '\n\n', t)
+
+    return t.strip()
+
+
+
 def call_coach_llm(user_input: str, top_roles_scored, llm):
-    role_summaries = [
-        f"- {r['title']}: {r['description']} (skills: {', '.join(r['skills'])})"
-        for r, _ in top_roles_scored
-    ]
-    role_block = "\n".join(role_summaries)
+    # Build detailed summaries of top roles (with skills list)
+    role_summaries = []
+    for idx, (r, score) in enumerate(top_roles_scored, start=1):
+        skills_str = ", ".join(r.get("skills", []))
+        summary = (
+            f"{idx}. **{r['title']}**\n"
+            f"   Description: {r.get('description','')}\n"
+            f"   Skills: {skills_str}\n"
+            f"   Similarity Score: {score:.3f}\n"
+        )
+        role_summaries.append(summary)
+    role_block = "\n\n".join(role_summaries)
 
+    # === SYSTEM PROMPT ===
     system_prompt = """
-    You are a warm, structured career coach.
-    Explain which careers fit the user and what to work on next.
+You are a warm, structured career coach.
 
-    Formatting rules for Markdown:
-    - Use **bold** for role names, not headers.
-    - Start each role with a numbered list: "1. **Role Name**"
-    - Each section title (e.g., **Why it fits:**, **Key Skills to Develop:**, **Certifications / Next Steps:**) must be on its own line, followed by its content on the next line.
-    - Use bullet points (-) for lists of skills or next steps.
-    - Leave one blank line between each numbered role.
-    - Do NOT nest lists or mix bold and italics in the same line.
-    - Always end sentences cleanly and logically.
-    - Keep the entire response under 500 words.
+STRICT FORMATTING RULES:
+- For each career, output EXACTLY these sections in this order.
+- Each SECTION HEADER must be indented with a tab on its own line, followed by ONE BLANK LINE, then the content.
+- Put ONE BLANK LINE between sections. Put ONE BLANK LINE between careers.
+- Do NOT place a header and its content on the same line.
 
-    Example format:
+Section headers (use these verbatim):
+    A. **Why it fits:**
+    B. **Key Skills Needed:**
+    C. **Next Steps:**
 
-    1. **Product Manager**
+Content rules:
+- “Key Skills Needed” must be a bullet list using only the provided skills (one skill per line, starting with "- ").
+- “Next Steps” must be 2–5 short, actionable bullets starting with a strong verb.
+- Do NOT invent skills. Keep total under 500 words.
+- Must end the entire reply with ONE short, encouraging closing sentence on its own line.
 
-    **Why it fits:**
-    You have strong communication and analytical skills that align well with this role.
+Example shape (spacing matters):
 
-    **Key Skills to Develop:**
-    - Technical proficiency
-    - Stakeholder management
-    - Data analysis
+1. **Role Name**
 
-    **Certifications / Next Steps:**
-    - PMP certification
-    - Agile methodology course
+    A. **Why it fits:**
 
-    End with one short, encouraging closing line.
-    """
+    [Explain why this career fits the user’s background, skills, and interests.]
+          
+    <insert a new line between A. and B.>
 
+    B. **Key Skills Needed:**
+
+    - Skill 1
+    - Skill 2
+    - Skill 3
+
+    <insert a new line between B. and C.>
+
+    C. **Next Steps:**
+
+    - Do X
+    - Practice Y
+    - Learn Z
+
+    <insert a new line after C.>
+
+""".strip()
+
+    # === USER PROMPT ===
     user_prompt = f"""
-    User said: "{user_input}"
+The user said: "{user_input}"
 
-    Top matching roles:
-    {role_block}
-    """
+Top-matching careers with their real skills:
+{role_block}
 
+Write the response for the TOP 3 careers following the exact formatting rules above.
+Use the skills exactly as provided for “Key Skills Needed.”
+End with one separate encouraging closing line.
+""".strip()
+
+    # --- Primary attempt (chat) ---
     try:
         response = llm.chat_completion(
             messages=[
-                {"role": "system", "content": system_prompt.strip()},
-                {"role": "user", "content": user_prompt.strip()}
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
             ],
-            max_tokens=800,
-            temperature=0.6,
-            top_p=0.9
+            max_tokens=900,
+            temperature=0.0,  # deterministic
+            top_p=1.0
         )
         raw_text = response.choices[0].message.content
-    except Exception:
-        fallback_prompt = system_prompt + "\n\n" + user_prompt
-        tg = llm.text_generation(fallback_prompt, max_new_tokens=800)
-        raw_text = tg[0]["generated_text"] if isinstance(tg, list) else tg
+        formatted = enforce_section_spacing(raw_text)
+        return truncate_to_last_sentence(formatted)
 
-    return truncate_to_last_sentence(raw_text)
+    # --- Fallback (still chat_completion) ---
+    except Exception:
+        try:
+            response = llm.chat_completion(
+                messages=[
+                    {"role": "system", "content": "You are a concise, structured career coach. Follow the formatting rules exactly."},
+                    {"role": "user", "content": user_prompt}
+                ],
+                max_tokens=900,
+                temperature=0.0,
+                top_p=1.0
+            )
+            raw_text = response.choices[0].message.content
+            formatted = enforce_section_spacing(raw_text)
+            return truncate_to_last_sentence(formatted)
+        except Exception:
+            return "I couldn’t reach the model to explain the matches. Please try again."
+
 
 
 def continue_chat_with_history(user_input, history, llm):
@@ -111,15 +183,34 @@ def continue_chat_with_history(user_input, history, llm):
         messages.append({"role": msg["role"], "content": msg["content"]})
     messages.append({"role": "user", "content": user_input})
 
+    # Primary attempt (chat)
     try:
-        response = llm.chat_completion(messages=messages, max_tokens=400, temperature=0.7, top_p=0.9)
+        response = llm.chat_completion(
+            messages=messages,
+            max_tokens=400,
+            temperature=0.0,   # deterministic
+            top_p=1.0
+        )
         raw_text = response.choices[0].message.content
+        return truncate_to_last_sentence(raw_text)
     except Exception:
-        fallback_prompt = "\n".join([f"{m['role']}: {m['content']}" for m in messages])
-        tg = llm.text_generation(fallback_prompt, max_new_tokens=400)
-        raw_text = tg[0]["generated_text"] if isinstance(tg, list) else tg
+        # Fallback: still chat_completion (NOT text_generation)
+        try:
+            fallback_prompt = "\n".join([f"{m['role']}: {m['content']}" for m in messages])
+            response = llm.chat_completion(
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant. Continue the conversation briefly and helpfully."},
+                    {"role": "user", "content": fallback_prompt}
+                ],
+                max_tokens=400,
+                temperature=0.0,
+                top_p=1.0
+            )
+            raw_text = response.choices[0].message.content
+            return truncate_to_last_sentence(raw_text)
+        except Exception:
+            return "I couldn’t reach the model to continue the chat. Please try again."
 
-    return truncate_to_last_sentence(raw_text)
 
 
 def calc_skill_match_percent(user_input: str, career_skills: list):

@@ -1,0 +1,83 @@
+{
+  "d0c993bf-2cf6-478e-a5f6-f9ec8dd3b5ba": {
+    "title": "New Chat",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": "\n👋 Hi! I'm your **AI Career Coach** — Tell me your **skills and interests**,  \nand I'll suggest your **top 3 matching career paths**.\n\nSo — **tell me a bit about yourself!**\n"
+      },
+      {
+        "role": "user",
+        "content": "I love java"
+      },
+      {
+        "role": "assistant",
+        "content": "1. **Full Stack Developer**\n\nA. **Why it fits:**\n\nYour love for Java suggests a strong interest in backend development, which is a core component of full-stack development. <br>\n\nB. **Key Skills Needed:**\n\n- JavaScript\n- Python\n- APIs\n- Databases\n\nC. **Next Steps:**\n\n-  Enroll in a full-stack development course or bootcamp. -  Build a portfolio of projects showcasing your skills. -  Network with other developers and attend industry events. <br>\n\n2. **Web Developer**\n\nA. **Why it fits:**\n\nYour interest in Java could translate well to web development, as Java is often used in backend systems that power websites. <br>\n\nB. **Key Skills Needed:**\n\n- HTML\n- CSS\n- JavaScript\n- APIs\n\nC. **Next Steps:**\n\n-  Start learning HTML, CSS, and JavaScript. -  Practice building simple websites and web applications. -  Explore different web development frameworks. <br>\n\n3. **UX/UI Designer**\n\nA. **Why it fits:**\n\nWhile Java is primarily a backend language, your interest in it could translate to a passion for user experience (UX) and user interface (UI) design. <br>\n\nB. **Key Skills Needed:**\n\n- Wireframing\n- Prototyping\n- Figma\n- User Research\n\nC. **Next Steps:**\n\n-  Explore UX/UI design resources and courses. -  Practice designing user flows and wireframes. -  Build a portfolio of UX/UI design projects. <br>\n\nYou have a great foundation to build upon. Keep exploring and learning!"
+      },
+      {
+        "role": "assistant",
+        "content": "_charts_ready_"
+      }
+    ],
+    "top_roles": [
+      [
+        "Full Stack Developer",
+        {
+          "title": "Full Stack Developer",
+          "description": "Works on both frontend and backend web applications. Key skills include JavaScript, Python, APIs, and Databases.",
+          "skills": [
+            "JavaScript",
+            "Python",
+            "APIs",
+            "Databases"
+          ],
+          "progression": [
+            "Full Stack Developer",
+            "Senior FSD",
+            "Lead FSD"
+          ]
+        },
+        0.3015584349632263
+      ],
+      [
+        "Web Developer",
+        {
+          "title": "Web Developer",
+          "description": "Builds and maintains websites and web applications. Key skills include HTML, CSS, JavaScript, and APIs.",
+          "skills": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "APIs"
+          ],
+          "progression": [
+            "Web Developer",
+            "Senior WD",
+            "WD Lead"
+          ]
+        },
+        0.2415378838777542
+      ],
+      [
+        "UX/UI Designer",
+        {
+          "title": "UX/UI Designer",
+          "description": "Designs intuitive user interfaces and improves user experience. Key skills include Wireframing, Prototyping, Figma, and User Research.",
+          "skills": [
+            "Wireframing",
+            "Prototyping",
+            "Figma",
+            "User Research"
+          ],
+          "progression": [
+            "UX/UI Designer",
+            "Senior UX/UI",
+            "Design Lead"
+          ]
+        },
+        0.22490188479423523
+      ]
+    ],
+    "mode": "chat"
+  }
+}

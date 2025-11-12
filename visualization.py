@@ -61,7 +61,8 @@ def plot_skill_gaps(career_title, career_skills, user_skills_text):
 
 def build_flow_dot(career_title, progression_list):
     """Return Graphviz DOT diagram for career progression."""
-    nodes = [f'You ({career_title})'] + progression_list
+    #nodes = [f'You ({career_title})'] + progression_list
+    nodes = [f'You'] + progression_list
     dot = "digraph G {\n  rankdir=LR;\n"
     for i, node in enumerate(nodes):
         dot += f'  node{i} [label="{node}", shape=box, style=filled, fillcolor="#c9f2c7"];\n'

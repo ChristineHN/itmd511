@@ -99,7 +99,7 @@ with st.sidebar:
     st.markdown("""
 1. Describe your **skills, tools, or interests**
 2. The system suggests **top 3 matching careers**
-3. Say **"show charts"** to view skill gap and progression visuals
+3. And provides **visual skill gaps and career progression**
     """)
 
     st.markdown("### Examples of useful info")
@@ -133,7 +133,7 @@ for msg in st.session_state.history:
                 for idx, (title, role, similarity_score) in enumerate(st.session_state.top_roles, start=1):
                     st.markdown(f"#### {idx}. {title}")
                     match_pct = calc_skill_match_percent(last_user_input, role["skills"])
-                    st.write(f"**Estimated skill match:** {match_pct}% | **Similarity score:** {similarity_score:.3f}")
+                    st.write(f"**Skill match:** {match_pct}% | **Similarity score:** {similarity_score:.3f}")
 
                     try:
                         st.plotly_chart(
@@ -150,7 +150,22 @@ for msg in st.session_state.history:
                     except Exception as e:
                         st.info(f"(progression diagram unavailable: {e})")
 
-        continue
+                st.markdown("---")
+                st.markdown("""
+                            ### 🔎 Understanding Similarity Scores
+                            These similarity scores are based on a predefined set of 60 globally fast-growing careers 
+                            (primarily within the technology, data, and healthcare domains). Please consult with a 
+                            trusted advisor before making any decisions.
+
+                            The similarity scores returned by the AI model can be interpreted as follows:
+
+                            - **0.75-1.00**  → ✅ Excellent match  
+                            - **0.50-0.74+** → ✅ Good match 
+                            - **0.35–0.49**  → ✅ Moderate match  
+                            - **Below 0.34** → ❌ Weak match  
+                            """)
+
+        continue  # Skip normal rendering
 
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"], unsafe_allow_html=True)
@@ -161,9 +176,12 @@ for msg in st.session_state.history:
 def handle_user_input(user_input: str):
     """
     Process user input and generate career suggestions or continue chat.
-    Automatically detects skills/interests using data from CAREERS.
+    Behaviors:
+    - If input is clearly about skills/tools/interests -> compute NEW top 3 careers + charts.
+    - If input asks for charts -> show charts for latest results.
+    - Otherwise -> continue conversational Q&A.
     """
-    # 🔥 Off-topic filter first
+    # 1️⃣ Off-topic guard
     if not is_on_topic(user_input, embedder):
         st.session_state.history.append({
             "role": "assistant",
@@ -180,54 +198,21 @@ Tell me something about **your background or interests**, and I’ll suggest car
         })
         return
 
+    # 2️⃣ Detect chart intent + skill-like content
     # Build a unified set of skill keywords from all careers
     all_skills = set()
     for role in CAREERS:
         for skill in role.get("skills", []):
             all_skills.add(skill.lower())
 
-    # Convert user input to lowercase for matching
     user_text = user_input.lower()
-    has_skill_info = any(skill in user_text for skill in all_skills)
 
     chart_keywords = ["chart", "visualize", "graph", "skill gap", "show me", "visualization"]
     wants_chart = any(k in user_text for k in chart_keywords)
 
-    # If initial mode and no clear skill info → Ask user to describe their skills
-    if st.session_state.conversation_mode == "career" and not wants_chart and not has_skill_info:
-        st.session_state.history.append({
-            "role": "assistant",
-            "content": """
-I want to recommend careers for you, but I need a bit more detail first 😊  
-Could you share **skills, tools, classes, or projects** you've worked with?
+    has_skill_info = any(skill in user_text for skill in all_skills)
 
-Examples:
-- "I used Python for data projects."
-- "I built something in C++."
-- "I worked with robotics hardware."
-"""
-        })
-        return
-
-    # Generate top career matches
-    if st.session_state.conversation_mode == "career" and not wants_chart:
-        top_roles_with_scores, _ = compute_top_roles(user_input, CAREERS, embedder, top_k=3)
-        st.session_state.top_roles = [
-            (role['title'], role, score) for role, score in top_roles_with_scores
-        ]
-        st.session_state.conversation_mode = "chat"
-        st.session_state.last_role_query = user_input
-        with st.chat_message("assistant"):
-            with st.spinner("Analyzing your strengths and career alignment..."):
-                bot_reply = call_coach_llm(user_input, top_roles_with_scores, llm)
-
-        # Save final reply to history *after* spinner finishes
-        st.session_state.history.append({"role": "assistant", "content": bot_reply})
-        st.session_state.history.append({"role": "assistant", "content": "_charts_ready_"})
-        return
-
-
-    # Show charts if requested
+    # 3️⃣ If user explicitly asks for charts and we have results -> show latest charts
     if wants_chart and st.session_state.top_roles:
         st.session_state.history.append({
             "role": "assistant",
@@ -236,13 +221,47 @@ Examples:
         st.session_state.history.append({"role": "assistant", "content": "_charts_ready_"})
         return
 
-    # Normal chat continuation (with spinner + topic guard)
+    # 4️⃣ If no clear skills in this message:
+    #    - If we don't have any matches yet -> ask for more detail.
+    #    - If we DO have matches -> treat as follow-up chat.
+    if not has_skill_info:
+        if not st.session_state.top_roles:
+            st.session_state.history.append({
+                "role": "assistant",
+                "content": """
+I want to recommend careers for you, but I need a bit more detail first 😊  
+Could you share some **skills, tools, classes, or projects** you've worked with?
+
+Examples:
+- "I analyze data with SQL and Tableau."
+- "I build web apps with React and APIs."
+- "I worked with Python for automation scripts."
+"""
+            })
+            return
+        else:
+            # Follow-up Q&A based on previous results
+            with st.chat_message("assistant"):
+                with st.spinner("Thinking..."):
+                    bot_reply = continue_chat_with_history(user_input, st.session_state.history, llm)
+            st.session_state.history.append({"role": "assistant", "content": bot_reply})
+            return
+
+    # 5️⃣ If we reach here: user_input contains skill info (new or updated profile)
+    #     → Always recompute top careers and show charts (even on later turns)
+    top_roles_with_scores, _ = compute_top_roles(user_input, CAREERS, embedder, top_k=3)
+    st.session_state.top_roles = [
+        (role["title"], role, score) for role, score in top_roles_with_scores
+    ]
+    st.session_state.last_role_query = user_input
+    st.session_state.conversation_mode = "chat"  # keep, but no longer blocks recompute
+
     with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            bot_reply = continue_chat_with_history(user_input, st.session_state.history, llm)
+        with st.spinner("Analyzing your strengths and career alignment..."):
+            bot_reply = call_coach_llm(user_input, top_roles_with_scores, llm)
 
     st.session_state.history.append({"role": "assistant", "content": bot_reply})
-
+    st.session_state.history.append({"role": "assistant", "content": "_charts_ready_"})
 
 
 

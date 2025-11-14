@@ -104,6 +104,8 @@ Content rules:
 
 Example shape (spacing matters):
 
+<insert new line>
+
 1. **Role Name**
 
     A. **Why it fits:**

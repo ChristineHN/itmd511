@@ -3,12 +3,14 @@
 
 # File: api_utils.py
 
+from dotenv import load_dotenv
 import os, re
 from sentence_transformers import SentenceTransformer, util
 from huggingface_hub import InferenceClient
 
-HF_TOKEN = os.getenv("HF_TOKEN")
+load_dotenv() 
 
+HF_TOKEN = os.getenv("HF_TOKEN")
 
 def load_embedder():
     return SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")

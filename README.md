@@ -16,6 +16,7 @@ source bin/activate
 pip install -r requirements.txt
 
 # 3) Save your Hugging Face Token
+mkdir .env
 cd .env
 //enter HF_TOKEN=hf_your_actual_token_here
 

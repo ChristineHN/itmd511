@@ -1,16 +1,21 @@
+70% of storage used … If you run out of space, you can't save to Drive or use Gmail.
 # Course: ITMD-511
 # Name: Hoa Le & Hyesoo Noh
 
 # File: api_utils.py
 
-from dotenv import load_dotenv
 import os, re
 from sentence_transformers import SentenceTransformer, util
 from huggingface_hub import InferenceClient
 
-load_dotenv() 
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()  # By default, looks for .env in the project root
 
 HF_TOKEN = os.getenv("HF_TOKEN")
+if HF_TOKEN is None:
+    raise ValueError("HF_TOKEN not found. Please set it in your .env file.")
 
 def load_embedder():
     return SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")

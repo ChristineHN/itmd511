@@ -1,3 +1,8 @@
+# Course: ITMD-511
+# Name: Hoa Le & Hyesoo Noh
+
+# File: app.py
+
 import streamlit as st
 from api_util import (
     load_embedder,
@@ -15,9 +20,34 @@ from sentence_transformers import util
 def is_on_topic(user_input, embedder):
     # 1) Quick keyword check (fast + avoids false negatives)
     CAREER_KEYWORDS = [
-        "project", "workflow", "requirements", "skills", "team",
-        "stakeholder", "analysis", "manage", "build", "design", "work"
+    # General work / experience
+    "project", "projects", "workflow", "experience", "professional",
+    "requirements", "documentation", "document", "operations",
+    "process", "improve", "optimize", "support",
+
+    # Team / collaboration
+    "team", "stakeholder", "cross-functional", "collaboration",
+    "coordinate", "communication", "meeting",
+
+    # Technical / development
+    "skills", "build", "built", "develop", "design", "implement",
+    "analysis", "analyze", "testing", "debug", "app", "apps",
+    "application", "software", "system", "automation", "work",
+
+    # Data & tools
+    "sql", "python", "tableau", "database",
+    "report", "reporting", "dashboard", "data",
+
+    # Business / BA / PM side
+    "gather", "gathered", "requirement gathering",
+    "process mapping", "workflow mapping", "use case",
+    "business", "functional", "user story", "acceptance criteria",
+
+    # Engineering / ops
+    "manage", "managed", "operate", "operation", "deployment",
+    "cloud", "infrastructure", "integration"
     ]
+
     lower_input = user_input.lower()
     if any(word in lower_input for word in CAREER_KEYWORDS):
         return True

@@ -72,7 +72,7 @@ Examples of what you can say:
 >
 > I’ve worked on building and maintaining web applications using JavaScript and Python. I also understand APIs, databases, and basic cloud deployment
 >
-> I’ve built web applications using HTML, CSS, and JavaScript, and I’m comfortable structuring responsive layouts and reusable UI components.
+> I worked on web applications using HTML, CSS, and JavaScript, and I’m comfortable structuring responsive layouts and reusable UI components.
 
 When you're ready, just type about **what you’ve done or what you enjoy doing!**
 """

@@ -1,4 +1,3 @@
-70% of storage used … If you run out of space, you can't save to Drive or use Gmail.
 # Course: ITMD-511
 # Name: Hoa Le & Hyesoo Noh
 
